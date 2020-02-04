@@ -11,6 +11,7 @@ import os
 from dotenv import load_dotenv
 import sqlite3
 import praw
+from .load_db import reddit
 
 
 '''

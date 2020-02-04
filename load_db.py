@@ -9,7 +9,7 @@ c = conn.cursor()
 c.execute('drop table if exists submissions')
 c.execute('''create table submissions (
                subreddit text,
-               subscribers int,
+               subreddit_subs int,
                title text,
                text text
              )
@@ -30,7 +30,7 @@ for subreddit in reddit.subreddits.popular(limit=1000):
         records.append(
             [subreddit.display_name, subreddit.subscribers, submission.title, submission.selftext])
     c.executemany('''insert into submissions
-                  (subreddit, subscribers, title, text)
+                  (subreddit, subreddit_subs, title, text)
                   values (?, ?, ?, ?)
                   ''', records)
     conn.commit()
