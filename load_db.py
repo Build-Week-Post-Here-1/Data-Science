@@ -9,6 +9,7 @@ c = conn.cursor()
 c.execute('drop table if exists submissions')
 c.execute('''create table submissions (
                subreddit text,
+               subscribers int,
                title text,
                text text
              )
@@ -16,8 +17,8 @@ c.execute('''create table submissions (
 
 # Load from Reddit
 load_dotenv()
-reddit = praw.Reddit(client_id=os.getenv('REDDIT_CLIENT_ID'),
-                     client_secret=os.getenv('REDDIT_CLIENT_SECRET'),
+reddit = praw.Reddit(client_id=os.getenv('client_id'),
+                     client_secret=os.getenv('client_secret'),
                      user_agent='lambda/posthere1')
 
 subreddit_count = 0
@@ -27,9 +28,9 @@ for subreddit in reddit.subreddits.popular(limit=1000):
     records = []
     for submission in subreddit.top(limit=2):
         records.append(
-            [subreddit.display_name, submission.title, submission.selftext, submission.subscribers])
+            [subreddit.display_name, subreddit.subscribers, submission.title, submission.selftext])
     c.executemany('''insert into submissions
-                  (subreddit, title, text, subscribers)
+                  (subreddit, subscribers, title, text)
                   values (?, ?, ?, ?)
                   ''', records)
     conn.commit()

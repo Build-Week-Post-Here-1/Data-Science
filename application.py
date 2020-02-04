@@ -7,6 +7,10 @@ import gensim.models.doc2vec as doc2vec
 from gensim.models.doc2vec import Doc2Vec
 from gensim.models.doc2vec import TaggedDocument
 import re
+import os
+from dotenv import load_dotenv
+import sqlite3
+import praw
 
 
 '''
@@ -16,9 +20,9 @@ model_dbow = Doc2Vec.load('#doc2vector model#.pkl')
 
 
 '''
-application = app = Flask(__name__)
+APP = Flask(__name__)
 
-@app.route('/api', methods=['POST'])
+@APP.route('/api', methods=['POST'])
 def make_predict(): # make prediction function
     post = request.get_json(force=True) # read in json data
 
@@ -55,7 +59,7 @@ def make_predict(): # make prediction function
             prefix = vectors_type + '_' + str(i)
             vectors[i] = model.docvecs[prefix]
         return vectors
-    
+    '''
     # prep text for prediction
     user_input = #need models to finish
 
@@ -64,7 +68,7 @@ def make_predict(): # make prediction function
 
     # send back the top 5 subreddits and their associated probabilities
     return jsonify(top_five = output)
+    '''
 
 if __name__ == '__main__':
     app.run(port = 8080, debug = True)
-
