@@ -5,7 +5,7 @@ import json
 '''
 from flask import Flask, render_template, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
-from .models import DB, Post
+from .models import DB
 '''
 import gensim
 import gensim.models.doc2vec as doc2vec
