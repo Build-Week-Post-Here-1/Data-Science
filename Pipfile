@@ -15,7 +15,6 @@ pandas = "*"
 gunicorn = "*"
 gensim = "*"
 python-dotenv = "*"
-sql-alchemy = "*"
 flask-sqlalchemy = "*"
 
 [requires]
