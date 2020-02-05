@@ -1,0 +1,25 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+numpy = "*"
+basilica = "*"
+flask = "*"
+json = "*"
+praw = "*"
+decouple = "*"
+python-decouple = "*"
+pandas = "*"
+gunicorn = "*"
+gensim = "*"
+dotenv = "*"
+python-dotenv = "*"
+sql-alchemy = "*"
+flask-sqlalchemy = "*"
+
+[requires]
+python_version = "3.7"
