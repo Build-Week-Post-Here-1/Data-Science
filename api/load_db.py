@@ -22,7 +22,7 @@ reddit = praw.Reddit(client_id=os.getenv('client_id'),
                      user_agent='lambda/posthere1')
 
 subreddit_count = 0
-for subreddit in reddit.subreddits.popular(limit=1000):
+for subreddit in reddit.subreddits.popular(limit=5000):
     subreddit_count += 1
     print(subreddit_count, subreddit)
     records = []

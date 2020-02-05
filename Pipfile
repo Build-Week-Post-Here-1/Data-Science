@@ -16,6 +16,8 @@ gunicorn = "*"
 gensim = "*"
 python-dotenv = "*"
 flask-sqlalchemy = "*"
+spacy = "*"
+scikit-learn = "*"
 
 [requires]
 python_version = "3.7"
