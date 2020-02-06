@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import numpy as np 
 import pandas as pd 
 import json
@@ -30,14 +29,14 @@ def create_app():
     def predict(): #define a prediction function
         lines = request.get_json(force=True) # read in json data
         body = lines['body'] # get variable
-
+        
         #deserialize model
         with open('test_model.pkl', 'rb') as mod:
             model = pickle.load(mod)
 
         #actual prediction
-        output = model.predict([[body]])
-
+        output = model.predict([body])
+        
         # use a dictionary to format output for json
         send_back = {'prediction': output}
         send_back_dummy = {'dummy': 1} # minimal functionality for testing
