@@ -10,6 +10,7 @@ import os
 import sqlite3
 import praw
 import spacy
+import sklearn
 
 
 def create_app():
@@ -22,8 +23,6 @@ def create_app():
     @APP.route("/")
     def index():
         return "Hello team!"
-
-    return APP
 
     
     @APP.route('/predict', methods=['POST'])
@@ -51,6 +50,17 @@ def create_app():
             status=200,
             mimetype='application/json'
         )
+    
+
+    @APP.route('/test', methods=['GET', 'POST'])
+    def test():
+        if request.method == 'GET':
+            return jsonify({"response": "Get Request Called"})
+        elif request.method == 'POST':
+            req_Json = request.get_json(force=True)
+            name = req_Json['name']
+            return jsonify({"response": "Hi " + name})
+    return APP
     
 
 
