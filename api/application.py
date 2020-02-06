@@ -11,14 +11,15 @@ import sqlite3
 import praw
 import spacy
 import sklearn
-
+from flask_cors import CORS
 
 def create_app():
     APP = Flask(__name__)
+    CORS(APP)
     APP.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite3'
     APP.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     DB.init_app(APP)
-
+    
 
     @APP.route("/")
     def index():
@@ -35,7 +36,8 @@ def create_app():
             model = pickle.load(mod)
 
         #actual prediction
-        output = model.predict([body])
+        user_input = 
+        output = model.predict([[user_input]])
         
         # use a dictionary to format output for json
         send_back = {'prediction': output}
@@ -47,7 +49,7 @@ def create_app():
     
         # give output to sender.
         return APP.response_class(
-            response=json.dumps(send_back_input),
+            response=json.dumps(send_back),
             status=200,
             mimetype='application/json'
         )
