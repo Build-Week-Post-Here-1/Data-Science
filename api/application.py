@@ -29,7 +29,7 @@ def create_app():
     def predict(): #define a prediction function
         lines = request.get_json(force=True) # read in json data
         body = lines['body'] # get variable
-        
+        '''
         #deserialize model
         with open('test_model.pkl', 'rb') as mod:
             model = pickle.load(mod)
@@ -39,6 +39,7 @@ def create_app():
         
         # use a dictionary to format output for json
         send_back = {'prediction': output}
+        '''
         send_back_dummy = {'dummy': 1} # minimal functionality for testing
         send_back_input = { # verify that input is working as expected
             'body': body
@@ -46,7 +47,7 @@ def create_app():
     
         # give output to sender.
         return APP.response_class(
-            response=json.dumps(send_back),
+            response=json.dumps(send_back_input),
             status=200,
             mimetype='application/json'
         )
