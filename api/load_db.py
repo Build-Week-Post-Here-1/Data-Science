@@ -26,7 +26,7 @@ for subreddit in reddit.subreddits.popular(limit=5000):
     subreddit_count += 1
     print(subreddit_count, subreddit)
     records = []
-    for submission in subreddit.top(limit=2):
+    for submission in subreddit.top(limit=6):
         records.append(
             [subreddit.display_name, subreddit.subscribers, submission.title, submission.selftext])
     c.executemany('''insert into submissions
