@@ -30,8 +30,7 @@ def create_app():
     APP.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     DB.init_app(APP)
     model = pickle.load(open(model_pkl, 'rb')) 
-    vector = pickle.load(open(vector_pkl))
-    nlp = pickle.load(open('en_core_web_md.pkl', rb))
+    nlp = spacy.load('en_core_web_md')
 
     @APP.route("/")
     def index():
