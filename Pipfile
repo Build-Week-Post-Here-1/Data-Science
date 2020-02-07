@@ -17,7 +17,8 @@ gensim = "*"
 python-dotenv = "*"
 flask-sqlalchemy = "*"
 spacy = "*"
-scikit-learn = "*"
+scikit-learn = "==0.20.1"
+flask-cors = "*"
 
 [requires]
 python_version = "3.7"
