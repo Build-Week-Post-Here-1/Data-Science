@@ -17,12 +17,12 @@ c.execute('''create table submissions (
 
 # Load from Reddit
 load_dotenv()
-reddit = praw.Reddit(client_id=os.getenv('client_id'),
-                     client_secret=os.getenv('client_secret'),
+reddit = praw.Reddit(client_id=os.getenv('REDDIT_CLIENT_ID'),
+                     client_secret=os.getenv('REDDIT_CLIENT_SECRET'),
                      user_agent='lambda/posthere1')
 
 subreddit_count = 0
-for subreddit in reddit.subreddits.popular(limit=100):
+for subreddit in reddit.subreddits.popular(limit=1000):
     subreddit_count += 1
     print(subreddit_count, subreddit)
     records = []
